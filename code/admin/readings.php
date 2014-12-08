@@ -73,18 +73,9 @@ include("core/conn.php");
                         	空系列
                 </li>
                 <div>
+                	<div id="subscriptionTitle">订阅用户</div>
                     <ul id="subscriptionList">
-                        <div id="subscriptionTitle">订阅用户</div>
-                        <li>
-                            <div class="subscriptionProfileContainer"><img class="profile" src="../data/0/1.jpeg"></div>
-                            <div class="subscriptionNameContainer">
-                            	<div>梦幻男孩</div>
-                                <div class="subscriptionSeries">昨天 10:20:30</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div><img class="profile" src="../data/0/1.jpeg"></div>
-                        </li>
+                        
                     </ul>
                 </div>
             </ul>

@@ -202,6 +202,7 @@ function onlineMagazine(obj)
 {
 	$.post("core/onlineMagazine.php","mid="+$(obj).data("mid"),function (data,status)
 	{
+		console.log(data);
 		$(obj).parent().animate({opacity:0},200,"swing",function (){
 			obj.parentNode.parentNode.removeChild(obj.parentNode);
 		});

@@ -65,7 +65,7 @@
 					$result1=mysql_query($sql1,$conn);
 					while($row1=mysql_fetch_array($result1))
 					{
-						$sql2="SELECT * FROM `magazine` INNER JOIN `series` ON `series`.`id`=`magazine`.`series` INNER JOIN `publisher` ON `series`.`publisher`=`publisher`.`id` WHERE `series`='".$row1['id']."' order by `issue`";
+						$sql2="SELECT * FROM `magazine` INNER JOIN `series` ON `series`.`id`=`magazine`.`series` INNER JOIN `publisher` ON `series`.`publisher`=`publisher`.`id` WHERE `series`='".$row1['id']."' AND `magazine`.`status`=1 order by `issue`";
 						$result2=mysql_query($sql2,$conn);
 						$num=mysql_num_rows($result2);
 						$curr_col=1;

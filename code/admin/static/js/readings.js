@@ -43,10 +43,11 @@ $(window).ready(function(e) {
 			
 		}
 	});
-	if(mid!=null)
+	$.post("core/getSubscriptionList.php","publisher="+publisher,function (data,status)
 	{
-		OpenIssue(mid);
-	}
+		$("#subscriptionList").html(data);
+	})
+	OpenIssue(mid);
 });
 function noitifaction(msg)
 {

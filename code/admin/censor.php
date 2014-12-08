@@ -54,7 +54,6 @@ include("core/conn.php");
     <div id="mainContent">
     	<div id="mainContentCenter">
         	<ul id="option">
-            	<div id="uploadButton" onClick="newSeries();">新建系列</div>
             	<li id="activedOptionItem" class="activedOptionItem" onClick="getList(this,0);">
                         	等待审核
                 </li>
@@ -64,21 +63,6 @@ include("core/conn.php");
                 <li id="BlankSeries" onClick="showBlankSeries(this);">
                         	空系列
                 </li>
-                <div>
-                    <ul id="subscriptionList">
-                        <div id="subscriptionTitle">订阅用户</div>
-                        <li>
-                            <div class="subscriptionProfileContainer"><img class="profile" src="../data/0/1.jpeg"></div>
-                            <div class="subscriptionNameContainer">
-                            	<div>梦幻男孩</div>
-                                <div class="subscriptionSeries">昨天 10:20:30</div>
-                            </div>
-                        </li>
-                        <li>
-                            <div><img class="profile" src="../data/0/1.jpeg"></div>
-                        </li>
-                    </ul>
-                </div>
             </ul>
             <div id="MessageListBox">
             	<div id="coreArea">
