@@ -1,14 +1,5 @@
 <?php
-session_start();
-header('Content-Type: text/html; charset=utf-8');
-$_SESSION['login']=true;
-$_SESSION['publisher']=1;
-if($_SESSION['login']!=true)
-{
-	header("Location:login.php");
-}
-$publisher=$_SESSION['publisher'];
-include("core/conn.php");
+include("core/checkLogin.php");
 ?>
 <!doctype html>
 <html>
@@ -25,7 +16,10 @@ include("core/conn.php");
     echo "<script type=\"text/javascript\">var publisher=".$publisher.";</script>";
 	if(isset($_REQUEST['mid']))
 	{
-		echo "<script type='text/javascript'>mid=".$_REQUEST['mid'].";</script>";
+		echo "<script type='text/javascript'>mid=".$_REQUEST['mid'].";
+		$(window).ready(function (){
+			OpenIssue(mid);
+			});</script>";
 	}
 ?>
 </head>
@@ -36,23 +30,17 @@ include("core/conn.php");
         	<div id="logo"></div>
             <ul id="navList">
             	<li>
+                	<a href="../">主页</a>
+                </li>
+            	<li >
                 	<a href="index.php">统计</a>
                 </li>
                 <li>
                 	<a href="feedback.php">反馈</a>
                 </li>
-                <li class="activedNavTab">
-                	<a href="readings.php">刊物</a>
-                </li>
-                <li>
-                	<a href="privilege.php">权限</a>
-                </li>
-                <li>
-                	<a href="advertisement.php">广告</a>
-                </li>
-                <li>
-                	<a href="censor.php">审核</a>
-                </li>
+                <?php
+                include("core/checkPrivillege.php");
+				?>
                 <li>
                 	<a href="setting.php">设置</a>
                 </li>

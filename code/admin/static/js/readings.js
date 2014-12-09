@@ -10,6 +10,7 @@ var fileListLength;
 var currentFile;
 var fileList;
 $(window).ready(function(e) {
+		$("#readingsTab").addClass("activedNavTab");
 	$(document).on({ 
         dragleave:function(e){    //拖离 
             e.preventDefault(); 
@@ -39,7 +40,7 @@ $(window).ready(function(e) {
 			setTimeout(function() {
 			$("#notification").css("top",-($("#notification").height()+30));
 			notification=false;
-			}, 3000);
+			}, 1000);
 			
 		}
 	});
@@ -47,7 +48,6 @@ $(window).ready(function(e) {
 	{
 		$("#subscriptionList").html(data);
 	})
-	OpenIssue(mid);
 });
 function noitifaction(msg)
 {

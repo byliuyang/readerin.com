@@ -32,7 +32,7 @@ function initializePageList()
 							}
 						});
 						position--;
-						
+						setProgress();
 					}
 				}
 			}
@@ -63,7 +63,7 @@ function initializePageList()
 							}
 						});
 						position++;
-						
+						setProgress();
 					}
 				}
 			}
@@ -154,10 +154,13 @@ function ShowPageContainer(obj,mid,p)
 		$("#ShowPageContainer").css({opacity:1});
 			$("#PageViewer").css({left:(document.documentElement.clientWidth-$("#PageViewer").width())/2,height:document.documentElement.clientHeight-60,top:30});
 			$("#Background").css({opacity:0});
-			timeout2=window.setInterval(function (){
+			$(".current").removeClass("book_new");
+			timeout2=window.setTimeout(function (){
 				$("#Background").css({display:"none"});
 				$("#PageViewer").focus();
 				initializePageList();
+				createQRCode($(obj).data("mid"));
+				showProgress();
 				}
 				,600);
 		},600);
@@ -194,6 +197,8 @@ function HidePageContainer()
 {
 	window.clearTimeout(timeout1);
 	window.clearTimeout(timeout2);
+	hideProgress();
+	destoryQRCode();
 	position=0;
 	on=false;
 	$("#PageViewer").css({left:$(".current").position().left,top:0,height:document.documentElement.clientHeight});
@@ -202,9 +207,10 @@ function HidePageContainer()
 		$("#PageViewer").css({height:$(".current").height(),top:$(".current").position().top+44});
 		$("#Background").css({width:$(".current").width(),top:$(".current").position().top+44,left:$(".current").position().left,height:$(".current").height()});
 		$("#ShowPageContainer").css({opacity:0}).css({display:"none"});
-		timeout2=window.setInterval(function (){
+		timeout2=window.setTimeout(function (){
 			$("#Background").css({display:"none"});
 			$("#PageViewer").remove();
+			$(".current").addClass("book_new");
 			}
 			,600);
 		},600);
@@ -237,4 +243,29 @@ function hideSpinner()
 		$(".spinner").css({display:"none"});
 	});
 	
+}
+function openMagazineNow(mid)
+{
+	$(".series>li").each(function(index, element) {
+        if($(element).data("mid")==mid)
+		{
+			$(element).click();
+		}
+    });
+}
+function setProgress()
+{
+	$("#progressValue").width(((position+1)/$(".current").data("size"))*document.documentElement.clientWidth);
+}
+function showProgress()
+{
+	$("#Progress").css({display:"block"}).animate({top:0},600,"easeOutBounce");
+	setProgress();
+}
+function hideProgress()
+{
+	$("#Progress").animate({top:-8},600,"easeOutBounce",function (){
+		$("#Progress").css({display:"none"});
+		$("#progressValue").width(0);
+	});
 }

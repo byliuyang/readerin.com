@@ -1,12 +1,12 @@
 <?php
 session_start();
 header('Content-Type: text/html; charset=utf-8');
-$_SESSION['login']=true;
-if($_SESSION['login']!=true)
+if($_SESSION['login']!=true || $_SESSION['systemSuperAdmin']!=true)
 {
-	header("Location:login.php");
+	header("Location:index.php");
 }
-include("core/conn.php");
+$publisher=$_SESSION['publisher'];
+include("conn.php");
 ?>
 <!doctype html>
 <html>
@@ -28,23 +28,17 @@ include("core/conn.php");
         	<div id="logo"></div>
             <ul id="navList">
             	<li>
+                	<a href="../">主页</a>
+                </li>
+            	<li >
                 	<a href="index.php">统计</a>
                 </li>
                 <li>
                 	<a href="feedback.php">反馈</a>
                 </li>
-                <li>
-                	<a href="readings.php">刊物</a>
-                </li>
-                <li>
-                	<a href="privilege.php">权限</a>
-                </li>
-                <li>
-                	<a href="advertisement.php">广告</a>
-                </li>
-                <li class="activedNavTab">
-                	<a href="censor.php">审核</a>
-                </li>
+                <?php
+                include("core/checkPrivillege.php");
+				?>
                 <li>
                 	<a href="setting.php">设置</a>
                 </li>

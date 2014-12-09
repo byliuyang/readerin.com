@@ -41,6 +41,7 @@ $(window).ready(function(e) {
 			
 		}
 	});
+	$("#censorTab").addClass("activedNavTab");
 	if(mid!=null)
 	{
 		OpenIssue(mid);

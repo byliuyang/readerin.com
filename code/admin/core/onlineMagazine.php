@@ -39,7 +39,7 @@ $sql="SELECT `series`.`name`,`series`.`id`,`publisher`.`email` FROM `magazine` I
 		</head>
 		<body>
 		<div><img src='".$_SERVER['HTTP_HOST']."/magazine/".$row[5]."/".$row[3]."'></div>
-		<div><a href='".$_SERVER['HTTP_HOST']."/?mid=".$id."'>立即翻阅</a></div>
+		<div><a href='".$_SERVER['HTTP_HOST']."/?mid=".$mid."'>立即翻阅</a></div>
 		</body>
 		</html>
 		";
