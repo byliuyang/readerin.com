@@ -1,5 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
+html
+{
+	background:no-repeat center center fixed;
+	  -webkit-background-size: auto;
+	  -moz-background-size: auto;
+	  -o-background-size: auto;
+	  background-size: auto;
+}
 body
 {
 	overflow-y:hidden;
@@ -48,6 +56,7 @@ body
 {
 	position:fixed;
 	width:100%;
+	left:0px;
 	bottom:0px;
 	z-index:50;
 	background-color:rgba(203,27,69,0.7);
@@ -76,12 +85,13 @@ body
 	background-color:rgba(255,255,255,0);
 	border-radius:3px 3px 0px 0px;
 	cursor:pointer;
-	transition:1s cubic-bezier(.7,-0.35,.24,1.24);
+	transition:top 1s cubic-bezier(.7,-0.35,.24,1.24);
 }
 #school_rank:hover
 {
 	bottom:0px;
 	background-color:rgba(255,255,255,1);
+	box-shadow:0px 0px 4px rgba(0,0,0,0.4);
 }
 #sr_title
 {
@@ -220,11 +230,12 @@ body
 {
 	position:fixed;
 	top:-74px;
+	left:0px;
 	width:100%;
 	padding:35px 0px 20px 0px;
 	background-color:rgba(203,27,69,0.7);
 	box-shadow:0px 0px 4px rgba(0,0,0,0.4);
-	transition:0.6s cubic-bezier(.98,-0.89,0,1.94);
+	transition:top 0.6s cubic-bezier(.98,-0.89,0,1.94);
 	cursor:pointer;
 }
 #searchInput
@@ -271,17 +282,17 @@ body
 	position:fixed;
 	right:30px;
 	bottom:0px;
-	z-index:100;
+	z-index:500;
 	cursor:pointer;
 	padding: 8px 20px 8px 20px;
 	font-size: 20px;
 	color:rgb(255,255,255);
 	cursor:pointer;
+	transition:0.3s ease-in-out;
 }
 #login:hover
 {
-	text-decoration:underline;
-	background-color:rgba(203,27,69,0.7);
+	background-color:rgba(203,27,69,1);
 }
 #adminEntry
 {
@@ -289,17 +300,17 @@ body
 	position:fixed;
 	right:115px;
 	bottom:0px;
-	z-index:100;
+	z-index:500;
 	cursor:pointer;
 	padding: 8px 20px 8px 20px;
 	font-size: 20px;
 	color:rgb(255,255,255);
 	cursor:pointer;
+	transition:0.3s ease-in-out;
 }
 #adminEntry:hover
 {
-	text-decoration:underline;
-	background-color:rgba(203,27,69,0.7);
+	background-color:rgba(203,27,69,1);
 }
 .box
 	{
@@ -406,4 +417,59 @@ body
 	height:8px;
 	background-color:#FFC107;
 	transition:width 600ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+#mainContent
+{
+	position:fixed;
+	left:0px;
+	z-index:500;
+	background:no-repeat center center;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	box-shadow:0px 0px 6px rgba(0,0,0,0.4);
+}
+#UserBookShelf
+{
+	position:fixed;
+	left:0px;
+	z-index:10;
+	overflow:hidden;
+	text-align:left;
+	font-size:0px;
+}
+#SubscriptionShelf
+{
+	display:inline-block;
+	width:200px;
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+	background-color:rgba(0,0,0,0.2);
+	text-align:center;
+}
+#CherishShelf
+{
+	display:inline-block;
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
+	box-shadow:0px 0px 10px rgba(0,0,0,0.6);
+}
+#LoadingScreen
+{
+	position:fixed;
+	left:0px;
+	z-index:1999;
+	background-color:rgba(203,27,69,1);
+	opacity:1;
+}
+#bootLoader
+{
+	position:fixed;
+	top:50%;
+	left:50%;
+	margin-left:-25px;
+	margin-top:-25px;
 }

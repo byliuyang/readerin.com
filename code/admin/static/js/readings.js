@@ -40,14 +40,14 @@ $(window).ready(function(e) {
 			setTimeout(function() {
 			$("#notification").css("top",-($("#notification").height()+30));
 			notification=false;
-			}, 1000);
+			}, 1500);
 			
 		}
 	});
 	$.post("core/getSubscriptionList.php","publisher="+publisher,function (data,status)
 	{
 		$("#subscriptionList").html(data);
-	})
+	});
 });
 function noitifaction(msg)
 {
@@ -560,6 +560,13 @@ function OpenIssue(mid)
 	$.post("core/getPages.php","mid="+mid,function (data,status)
 	{
 		$("#coreArea").html(data);
+		$(".addlabelContent").on("keypress", function(e){
+			if (e.keyCode==13)
+			{
+				e.preventDefault();
+				addLabel();
+			}
+		});
 		initializePageList();
 	});
 	return false;
@@ -615,5 +622,30 @@ function updateIssueName(obj)
 {
 	$.get("core/updateIssueName.php","mid="+$(obj).data("mid")+"&"+"issue="+$(obj).html(),function (data,status){
 		noitifaction("已更新期刊信息");
+	});
+}
+function addLabel()
+{
+	var mid=$("#MagazineAttributes").data("mid");
+	var keyword=$(".addlabelContent").html();
+	if(keyword!="")
+	{
+		$.post("core/addLabel.php","mid="+mid+"&keyword="+keyword,function(data,status){
+			var oldLabel=$("#labelList").html();
+			$("#labelList").prepend(data);
+			$(".addlabelContent").html("");
+			$(".addlabelContent").focus();
+			});
+	}
+	else
+	{
+		alert("您好像还没输入搜索关键词哦～");
+	}
+}
+function removeLabel(obj)
+{
+	var kid=$(obj).data("keyword");
+	$.post("core/DeleteLabel.php","kid="+kid,function(data,status){
+		$(obj).parent().remove();
 	});
 }

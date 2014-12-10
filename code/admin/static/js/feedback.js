@@ -15,7 +15,7 @@ $(window).ready(function(e) {
 			setTimeout(function() {
 			$("#notification").css("top",-($("#notification").height()+30));
 			notification=false;
-			}, 3000);
+			}, 1500);
 			
 		}
 	});

@@ -7,7 +7,14 @@ $result=mysql_query($sql,$conn);
 $row=mysql_fetch_array($result);
 echo "<div><div id='MagazineAttributes' data-title='".$row[3]."' data-mid='".$row[0]."' data-size='".$row[2]."'><div id='MagazineName'>".$row[3]." 第<span contenteditable='true' data-mid='".$row[0]."' onblur='updateIssueName(this)'>".$row[1]."</span>期 </div><div id='MagazineUploadTime'>";
 smartTime(strtotime($row[4]));
-echo "</div></div><div id='magazineCoverContainer'><ul id='PageList' data-size='".$row[2]."'>";
+echo "</div><ul id='labelList'>";
+$sql2="SELECT *  FROM `keyWord` WHERE  `mid`=".$mid;
+$result2=mysql_query($sql2,$conn);
+while($row2=mysql_fetch_array($result2))
+{
+	echo "<li class='labelItem'><div class='labelConetent'>".$row2['word']."</div><div class='deleteLabelBtn' title='移除标签' data-keyword='".$row2['id']."' onclick='removeLabel(this)'></div></li>";
+}
+echo "<li class='addLabelItem'><div class='addlabelContent' contenteditable='true'></div><div class='addLabelBtn' title='添加新标签' onclick='addLabel()'></div></li></ul></div><div id='magazineCoverContainer'><ul id='PageList' data-size='".$row[2]."'>";
 $sql="SELECT * FROM `pages`  WHERE  `pages`.`magazine`=".$mid." ORDER BY `pages`.`position` ASC";
 $result=mysql_query($sql,$conn);
 while($row=mysql_fetch_array($result))

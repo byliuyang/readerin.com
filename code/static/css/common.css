@@ -3,15 +3,6 @@
 /*
 更新了意见反馈样式，增加了CSS3过渡动画
 */
-html
-{
-	background:no-repeat center center fixed;
-	background-image:url(../../data/system/wallpaper/2.jpg);
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
-}
 body
 {
 	padding:0px;
