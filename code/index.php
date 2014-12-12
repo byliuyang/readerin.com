@@ -31,7 +31,18 @@ if(isset($_REQUEST['mid']))
 </head>
 
 <body>
-	<div id="mainContent">
+	<div id="mainContent" <?php 
+				if(isset($_SESSION['login']))
+                {
+                    if($_SESSION['login']==true)
+                    {
+                        echo "data-login='1'";
+                    }
+                    else
+                    {
+                        echo "data-login='0'";
+                    }
+                } ?> >
         <div id="searchBox" onMouseOver="showSearchBox();" onMouseOut="hideSearchBox();" onBlur="hideSearchBox();" onBlur="hideSearchBox()">
             <input type="text" placeholder="请输入搜索关键字" id="searchInput" onKeyUp="searchMagazine(this);" onBlur="hideSearchBox()">
         </div>
@@ -65,14 +76,8 @@ if(isset($_REQUEST['mid']))
         <!--
         登陆
         -->
-        <div id="ShareBox">
-            <div id="ShareBoxTitle">
-            </div>
-            <div id="ShareBoxTitleQRCode" title="扫描二维码分享到微信朋友圈">
-            </div>
-        </div>
         <!--这里是开始
-        2）你们重构了刊物选中特效
+        2）重构了刊物选中特效
         3）针对多本刊物，重进设计了布局
         -->
         <ul id="book_shelf">
@@ -125,82 +130,68 @@ if(isset($_REQUEST['mid']))
                 </div>
                 <div id="loginBG" onClick="closeLogin();" title="回到主界面">
                 </div>
-                 <div id="Background">
-                </div>
-                <div id="ShowPageContainer">
-                </div>
-                <div id="spinner" class="spinner">
-                  <div class="cube1"></div>
-                  <div class="cube2"></div>
-                </div>
-                <div id="Progress">
-                    <div id="progressBar">
-                        <div id="progressValue">
-                        </div>
-                    </div>
-                </div>
        </div>
+       <div id="ShareBox">
+            <div id="ShareBoxTitle">
+            </div>
+            <div id="ShareBoxTitleQRCode" title="扫描二维码分享到微信朋友圈">
+            </div>
+        </div>
        <div id="UserBookShelf">
-       		<ul id="SubscriptionShelf"></ul>
-            <ul id="CherishShelf"></ul>
+       		<ul id="SubscriptionShelf">
+            	<div id="SubscriptionShelfTitle">
+                	我的订阅
+                </div>
+            	<li>
+                	<div><img title="长按编辑刊物" class="magazineCover" src="magazine/134/small/4b883095e08b1ca499906af10f0eea3e.jpg" data-size="4" data-mid="134" data-goup="0" onDblClick="openIssue(this,134)"></div>
+                    <div class="magazineSeries">Insight</div>
+                    <div class="deleteBtnBox" data-mid="134" onclick="removeMagazine(this);">
+                    	<div class="deleteBtn"></div>
+                    </div>
+                </li>
+            </ul>
+            <ul id="CherishShelf">
+            	<div id="CherishShelfTitle">
+                	我的书架［共收藏了108本刊物］
+                </div>
+            	<li>
+                	<div><img title="长按编辑刊物" class="magazineCover" src="magazine/134/small/4b883095e08b1ca499906af10f0eea3e.jpg" data-size="4" data-mid="134" data-goup="0" onDblClick="openIssue(this,134)"></div>
+                    <div class="magazineSeries">Insight</div>
+                    <div class="deleteBtnBox" data-mid="134" onclick="removeMagazine(this);">
+                    	<div class="deleteBtn"></div>
+                    </div>
+                </li>
+                <li>
+                	<div><img title="长按编辑刊物" class="magazineCover" src="magazine/135/small/9365ae980268ef00988a8048fa732226.jpg" data-size="4" data-mid="134" data-goup="0" onDblClick="openIssue(this,134)"></div>
+                    <div class="magazineSeries">Insight</div>
+                    <div class="deleteBtnBox" data-mid="134" onclick="removeMagazine(this);">
+                    	<div class="deleteBtn"></div>
+                    </div>
+                </li>
+            </ul>
        </div>
+       <div id="Background">
+		</div>
+        <div id="ShowPageContainer">
+        </div>
+        <div id="spinner" class="spinner">
+            <div class="cube1">
+            </div>
+            <div class="cube2">
+            </div>
+        </div>
+        <div id="Progress">
+            <div id="progressBar">
+                <div id="progressValue">
+                </div>
+            </div>
+        </div>
        <div id="LoadingScreen">
-       		<svg id='bootLoader' width="50" height="50" viewBox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#fff">
-				<circle cx="12.5" cy="12.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="0s" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
-					<animate attributeName="fill-opacity"
-					 begin="100ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="52.5" cy="12.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="300ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="52.5" cy="52.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="600ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="92.5" cy="12.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="800ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="92.5" cy="52.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="400ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="12.5" cy="92.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="700ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="52.5" cy="92.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="500ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-				<circle cx="92.5" cy="92.5" r="12.5">
-					<animate attributeName="fill-opacity"
-					 begin="200ms" dur="1s"
-					 values="1;.2;1" calcMode="linear"
-					 repeatCount="indefinite" />
-				</circle>
-			</svg>
+            <div class="bootSpinner" id='bootLoader'>
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
        </div>
 </body>
 </html>

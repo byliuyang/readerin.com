@@ -1,96 +1,92 @@
 @charset "UTF-8";
 /* CSS Document */
-html
-{
+html {
 	/*
 	** 字体跨平台安全字体，从左到右为Mac os，Microsoft Office，Windows
 	** 自定义字体易减缓页面家在速度，导致有字的地方全都变成横线
 	*/
-	font-family:"STHeiti","STXihei","Microsoft YaHei";
-	background:no-repeat center center fixed;
-	background-image:url(../../data/system/wallpaper/2.jpg);
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	background: no-repeat center center fixed;
+	background-image: url(../../data/system/wallpaper/2.jpg);
+	background-size: cover;
+	font-family: "STHeiti","STXihei","Microsoft YaHei";
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 }
-body
-{
-	height:100%;
-	text-align:center;
+
+body {
+	height: 100%;
+	text-align: center;
 }
-.box
-	{
+
+.box {
 		/*绝对居中*/
-		position:absolute;
-		margin-top:-88px;
-		margin-left:-154px;
-		top:50%;
-		left:50%;
-		
-		width: 308px;
-		height: 176px;
-		
+	position: absolute;
+	margin-top: -88px;
+	margin-left: -154px;
+	top: 50%;
+	left: 50%;
+	width: 308px;
+	height: 176px;
 		/*颜色尽量采用rgb，方便做透明度*/
-		background-color:rgb(243,243,243);
-		
-		box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
-	}
-	#loginBoxTitle
-	{
-		background:rgb(203,27,69);
-		color:#fff;
-		font-size: 21px;
-		padding:10px 0px 10px 0px;
-	}
-	#loginBoxContent
-	{
-		padding:10px;
-	}
-	#loginBoxContentInputBox
-	{
-		background-color:#fff;
-		border-radius:3px;
-		padding:0px 10px 0px 10px;
-	}
-	.EditText
-	{
-		width:100%;
-		outline:none;
-		text-align:center;
-		font-size:18px;
-		font-family:"STHeiti","STXihei","Microsoft YaHei";
-		padding:8px 0px 8px 0px;
-		border:none;
-	}
-	#loginBoxPasswordEditText
-	{
-		border-top:1px solid rgb(243,243,243);
-	}
-	#ForgetPasswordIcon
-	{
-		position:relative;
-		z-index:200;
-		float:right;
-		background-image:url(../img/help-50.png);
-		height: 21px;
-		width: 21px;
-		background-size:contain;
-		top:-28px;
-		opacity:0.3;
-		cursor:pointer;
-	}
-	.submitButton
-	{
-		margin:10px auto 0px auto;
-		padding:8px;
-		width: 116px;
-		background:rgb(203,27,69);
-		color:#fff;
-		transition:0.2 ease-in-out;
-		cursor:pointer;
-	}
-	.submitButton:hover
-	{
-		background-color:rgba(203,27,69,0.8)
-	}
+	background-color: rgb(243,243,243);
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
+}
+
+#loginBoxTitle {
+	padding: 10px 0px 10px 0px;
+	background: rgb(203,27,69);
+	color: #fff;
+	font-size: 21px;
+}
+
+#loginBoxContent {
+	padding: 10px;
+}
+
+#loginBoxContentInputBox {
+	padding: 0px 10px 0px 10px;
+	border-radius: 3px;
+	background-color: #fff;
+}
+
+.EditText {
+	padding: 8px 0px 8px 0px;
+	width: 100%;
+	outline: none;
+	border: none;
+	text-align: center;
+	font-size: 18px;
+	font-family: "STHeiti","STXihei","Microsoft YaHei";
+}
+
+#loginBoxPasswordEditText {
+	border-top: 1px solid rgb(243,243,243);
+}
+
+#ForgetPasswordIcon {
+	position: relative;
+	top: -28px;
+	z-index: 200;
+	float: right;
+	width: 21px;
+	height: 21px;
+	background-image: url(../img/help-50.png);
+	background-size: contain;
+	opacity: 0.3;
+	cursor: pointer;
+}
+
+.submitButton {
+	margin: 10px auto 0px auto;
+	padding: 8px;
+	width: 116px;
+	background: rgb(203,27,69);
+	color: #fff;
+	cursor: pointer;
+	transition: 0.2 ease-in-out;
+}
+
+.submitButton:hover {
+	background-color: rgba(203,27,69,0.8);
+}

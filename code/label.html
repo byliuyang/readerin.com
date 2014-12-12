@@ -1,0 +1,304 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<style>
+	body
+	{
+		font-family: "STHeiti","STXihei","Microsoft Yahei";
+		background-image:url(data/system/wallpaper/3.jpg);
+	}
+	#PageViewer
+	{
+		position:fixed;
+		z-index:502;
+		box-shadow:0px 0px 6px rgba(0,0,0,0.4);
+	}
+	#readingLableList
+	{
+		position:fixed;
+		z-index:500;
+		list-style:none;
+		padding:0px;
+		margin:0px;
+		font-size:12px;
+	}
+	#readingLableList>li
+	{
+		color:#fff;
+		padding:6px 20px 6px 40px;
+		width:160px;
+		margin-left:-175px;
+		box-shadow:0px 0px 3px rgba(0,0,0,0.4);
+		opacity:0.4;
+		transition:all 0.5s ease-in-out;
+		cursor:pointer;
+		margin-bottom:2px;
+		outline:none;
+	}
+	#readingLableList>li:hover
+	{
+		margin-left:0px;
+		opacity:1;
+	}
+	.redLabel
+	{
+		background-color:#D32F2F;
+	}
+	.pinkLabel
+	{
+		background-color:#E91E63;
+	}
+	.purpleLabel
+	{
+		background-color:#9C27B0;
+	}
+	.deepPurpleLabel
+	{
+		background-color:#3F51B5;
+	}
+	.blueLabel
+	{
+		background-color:#1976D2;
+	}
+	.tealLabel
+	{
+		background-color:#009688;
+	}
+	.greenLabel
+	{
+		background-color:#4CAF50;
+	}
+	.lightGreenLabel
+	{
+		background-color:#8BC34A;
+	}
+	.amberLabel
+	{
+		background-color:#FFC107;
+	}
+	.orangeLabel
+	{
+		background-color:#FF9800;
+	}
+	.deepOrangeLabel
+	{
+		background-color:#FF5722;
+	}
+	.brownLabel
+	{
+		background-color:#795548;
+	}
+	#actionBtnBox
+	{
+		position:fixed;
+		bottom:80px;
+		right:80px;
+		padding:25px;
+		border-radius:50%;
+		height:24px;
+		width:24px;
+		background-color:#db4437;
+		box-shadow:0px 0px 4px rgba(0,0,0,0.4);
+	}
+	#actionBtn
+	{
+		height:24px;
+		width:24px;
+		background-position:center;
+		background-repeat:no-repeat;
+		background-size:contain;
+		background-image:url(static/img/action.png);
+		transition:all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+		cursor:pointer;
+	}
+	#actionBtnBox:hover>#actionBtn
+	{
+		-webkit-transform:rotate(90deg);
+		background-image:url(static/img/category.png);
+	}
+	#actionBtnBox>ul
+	{
+		float:right;
+		position:fixed;
+		width:74px;
+		bottom:154px;
+		right:80px;
+		list-style:none;
+		padding:0px;
+		margin:0px;
+		text-align:center;
+	}
+	#actionBtnBox>ul>li
+	{
+		height:48px;
+		margin-bottom:20px;
+		padding:0px;
+		text-align:center;
+	}
+	#actionBtnBox>ul>li>div
+	{
+		position:relative;
+		height:0px;
+		width:0px;
+		padding:0px;
+		opacity:0;
+		margin-left:auto;
+		margin-right:auto;
+		top:24px;
+		border-radius:50%;
+		transition-property: all;
+		cursor:pointer;
+    	transition-duration: 300ms;
+	}
+	#actionBtnBox:hover>ul>li>div
+	{
+		top:0px;
+		height:48px;
+		width:48px;
+		opacity:1;
+		box-shadow:0px 0px 4px rgba(0,0,0,0.2);
+	}
+	#actionBtnBox>ul>li>div>div
+	{
+		position:relative;
+		height:0px;
+		width:0px;
+		opacity:0;
+		margin-left:auto;
+		margin-right:auto;
+		top:0px;
+		transition-property: all;
+    	transition-duration: 50ms;
+		background-size:0px;
+		background-position:center;
+		background-repeat:no-repeat;
+	}
+	#actionBtnBox:hover>ul>li>div>div
+	{
+		top:12px;
+		opacity:1;
+		height:24px;
+		width:24px;
+		background-size:24px;
+	}
+	#chatBtn
+	{
+		background-color:#FF9800;
+	}
+	#chatBtn>div
+	{
+		background-image:url(static/img/chat.png);
+	}
+	#tagBtn
+	{
+		background-color:#FFD600;
+		-webkit-transition-delay: .05s; /* Safari */
+    	transition-delay: .05s;
+	}
+	#tagBtn>div
+	{
+		background-image:url(static/img/tag.png);
+		-webkit-transition-delay: .05s; /* Safari */
+    	transition-delay: .05s;
+	}
+	#starBtn
+	{
+		background-color:#00897B;
+		-webkit-transition-delay: .1s; /* Safari */
+    	transition-delay: .1s;
+	}
+	#starBtn>div
+	{
+		background-image:url(static/img/star.png);
+		-webkit-transition-delay: .1s; /* Safari */
+    	transition-delay: .1s;
+	}
+	#subscriptionBtn
+	{
+		background-color:#0288D1;
+		-webkit-transition-delay: .15s; /* Safari */
+    	transition-delay: .15s;
+	}
+	#subscriptionBtn>div
+	{
+		background-image:url(static/img/subscription.png);
+		-webkit-transition-delay: .15s; /* Safari */
+    	transition-delay: .15s;
+	}
+	#shareBtn
+	{
+		background-color:#6A1B9A;
+		-webkit-transition-delay: .2s; /* Safari */
+    	transition-delay: .2s;
+	}
+	#shareBtn>div
+	{
+		background-image:url(static/img/share.png);
+		-webkit-transition-delay: .2s; /* Safari */
+    	transition-delay: .2s;
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+	$(window).ready(function(e) {
+        $("#readingLableList").css({left:$("#PageViewer").position().left+$("#PageViewer").width()-20,top:$("#PageViewer").position().top+20});
+    });
+	
+	
+</script>
+</head>
+
+<body>
+	<img id="PageViewer" style="height: 733px; top: 30px; left: 582.45945945946px;" src="http://dev.readerin.com/magazine/134/4b883095e08b1ca499906af10f0eea3e.jpg">
+	<ul id="readingLableList">
+    	<li class="redLabel" contenteditable="true"><div>Why do we study abroad?</div></li>
+        <li class="pinkLabel" contenteditable="true">Preperation is the key to giving greate speech</li>
+        <li class="purpleLabel" contenteditable="true">Key words of application essay</li>
+        <li class="blueLabel" contenteditable="true">Key words of application essay</li>
+        <li class="tealLabel" contenteditable="true">Key words of application essay</li>
+        <li class="greenLabel" contenteditable="true">Key words of application essay</li>
+        <li class="lightGreenLabel" contenteditable="true">Key words of application essay</li>
+        <li class="amberLabel" contenteditable="true">Key words of application essay</li>
+        <li class="orangeLabel" contenteditable="true">Key words of application essay</li>
+        <li class="brownLabel" contenteditable="true">Key words of application essay</li>
+    </ul>
+    <div id="actionBtnBox" title="做点儿什么？">
+    	<div id="actionBtn">
+        </div>
+        <ul>
+        	<li>
+            	<div id="shareBtn" title="分享">
+                    <div>
+                    </div>
+                </div>
+            </li>
+        	<li>
+            	<div id="subscriptionBtn" title="订阅">
+                    <div>
+                    </div>
+                </div>
+            </li>
+        	<li>
+            	<div id="starBtn" title="收藏">
+                    <div>
+                    </div>
+                </div>
+            </li>
+        	<li>
+            	<div id="tagBtn" title="贴标签">
+                    <div>
+                    </div>
+                </div>
+            </li>
+        	<li>
+            	<div id="chatBtn" title="做评论">
+                    <div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
