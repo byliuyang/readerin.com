@@ -101,6 +101,7 @@
 		width:24px;
 		background-color:#db4437;
 		box-shadow:0px 0px 4px rgba(0,0,0,0.4);
+		cursor:pointer;
 	}
 	#actionBtn
 	{
@@ -111,7 +112,6 @@
 		background-size:contain;
 		background-image:url(static/img/action.png);
 		transition:all 600ms cubic-bezier(0.19, 1, 0.22, 1);
-		cursor:pointer;
 	}
 	#actionBtnBox:hover>#actionBtn
 	{
@@ -137,7 +137,7 @@
 		padding:0px;
 		text-align:center;
 	}
-	#actionBtnBox>ul>li>div
+	#actionBtnBox>ul>li>.labelBtn
 	{
 		position:relative;
 		height:0px;
@@ -152,7 +152,7 @@
 		cursor:pointer;
     	transition-duration: 300ms;
 	}
-	#actionBtnBox:hover>ul>li>div
+	#actionBtnBox:hover>ul>li>.labelBtn
 	{
 		top:0px;
 		height:48px;
@@ -160,7 +160,7 @@
 		opacity:1;
 		box-shadow:0px 0px 4px rgba(0,0,0,0.2);
 	}
-	#actionBtnBox>ul>li>div>div
+	#actionBtnBox>ul>li>.labelBtn>div
 	{
 		position:relative;
 		height:0px;
@@ -175,13 +175,36 @@
 		background-position:center;
 		background-repeat:no-repeat;
 	}
-	#actionBtnBox:hover>ul>li>div>div
+	#actionBtnBox:hover>ul>li>.labelBtn>div
 	{
 		top:12px;
 		opacity:1;
 		height:24px;
 		width:24px;
 		background-size:24px;
+	}
+	.toastDialog
+	{
+		position:relative;
+		float:left;
+		top:-40px;
+		visibility:hidden;
+		font-size:14px;
+		left:-124px;
+		color:#fff;
+		opacity:0;
+		padding:8px;
+		width:100px;
+		background-color:#111;
+		border-radius:4px;
+		transition:visibility 0s cubic-bezier(0.19, 1, 0.22, 1) 300ms, opacity 300ms cubic-bezier(0.19, 1, 0.22, 1);
+	}
+	#actionBtnBox>ul>li:hover>.toastDialog
+	{
+		visibility:visible;
+		opacity:1;
+		top:-40px;
+		transition-delay:0s;
 	}
 	#chatBtn
 	{
@@ -269,31 +292,32 @@
         </div>
         <ul>
         	<li>
-            	<div id="shareBtn" title="分享">
+            	<div class="labelBtn" id="shareBtn" title="分享">
+                    <div>
+                    </div>
+                </div>
+                <div class="toastDialog">分享这本刊物</div>
+            </li>
+        	<li>
+            	<div class="labelBtn" id="subscriptionBtn" title="订阅">
                     <div>
                     </div>
                 </div>
             </li>
         	<li>
-            	<div id="subscriptionBtn" title="订阅">
+            	<div class="labelBtn" id="starBtn" title="收藏">
                     <div>
                     </div>
                 </div>
             </li>
         	<li>
-            	<div id="starBtn" title="收藏">
+            	<div class="labelBtn" id="tagBtn" title="贴标签">
                     <div>
                     </div>
                 </div>
             </li>
         	<li>
-            	<div id="tagBtn" title="贴标签">
-                    <div>
-                    </div>
-                </div>
-            </li>
-        	<li>
-            	<div id="chatBtn" title="做评论">
+            	<div class="labelBtn" id="chatBtn" title="做评论">
                     <div>
                     </div>
                 </div>
