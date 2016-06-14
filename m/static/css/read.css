@@ -1,0 +1,36 @@
+@charset "utf-8"
+	#magazine
+	{
+		position:absolute;
+	}
+	#ToolBar
+	{
+		position:fixed;
+		bottom:89px;
+		border-top:1px solid rgb(191,191,195);
+		z-index:5;
+	}
+	#InforBar
+	{
+		position:fixed;
+		bottom:0px;
+		border-top:1px solid rgb(191,191,195);
+		z-index:6;
+	}
+	#ToolBar_div_series
+	{
+		position:absolute;
+		left:20px;
+	}
+	#ToolBar_div_school
+	{
+		position:absolute;
+		right:20px;
+	}
+	#ReadView
+	{
+		padding-bottom:190px;
+		display:none;
+		opacity:0;
+		left:100%;
+	}
